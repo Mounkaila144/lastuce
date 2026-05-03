@@ -1,0 +1,45 @@
+{
+  "common": {
+    "loading": "Chargement…",
+    "search": "Rechercher",
+    "submit": "Envoyer",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "more": "En savoir plus",
+    "share": "Partager",
+    "language": "Langue"
+  },
+  "nav": {
+    "home": "Accueil",
+    "episodes": "Épisodes",
+    "tips": "Astuces",
+    "blog": "Blog",
+    "partnerships": "Partenariats",
+    "contact": "Contact",
+    "submitTip": "Proposer une astuce"
+  },
+  "newsletter": {
+    "placeholder": "Votre adresse email",
+    "submit": "S'inscrire",
+    "success": "Vérifiez votre boîte mail pour confirmer.",
+    "error": "Une erreur est survenue, réessayez."
+  },
+  "footer": {
+    "tagline": "Le rendez-vous des astuces du quotidien.",
+    "rights": "Tous droits réservés.",
+    "explore": "Explorer",
+    "informations": "Informations",
+    "social": "Réseaux sociaux",
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité"
+  },
+  "header": {
+    "skipToContent": "Aller au contenu principal",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "searchPlaceholder": "Rechercher un épisode, une astuce…"
+  }
+}

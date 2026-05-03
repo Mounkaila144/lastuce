@@ -1,0 +1,45 @@
+{
+  "common": {
+    "loading": "Loading…",
+    "search": "Search",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "more": "Learn more",
+    "share": "Share",
+    "language": "Language"
+  },
+  "nav": {
+    "home": "Home",
+    "episodes": "Episodes",
+    "tips": "Tips",
+    "blog": "Blog",
+    "partnerships": "Partnerships",
+    "contact": "Contact",
+    "submitTip": "Submit a tip"
+  },
+  "newsletter": {
+    "placeholder": "Your email address",
+    "submit": "Subscribe",
+    "success": "Check your inbox to confirm.",
+    "error": "Something went wrong, please retry."
+  },
+  "footer": {
+    "tagline": "Your daily go-to for clever tips.",
+    "rights": "All rights reserved.",
+    "explore": "Explore",
+    "informations": "Information",
+    "social": "Social media",
+    "legal": "Legal notice",
+    "privacy": "Privacy"
+  },
+  "header": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "searchPlaceholder": "Search an episode, a tip…"
+  }
+}

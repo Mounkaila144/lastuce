@@ -1,0 +1,6 @@
+export { default as AppHeader } from './AppHeader.vue'
+export { default as AppFooter } from './AppFooter.vue'
+export { default as MobileMenu } from './MobileMenu.vue'
+export { default as AppLogo } from './AppLogo.vue'
+export { default as GlobalSearch } from './GlobalSearch.vue'
+export { default as LocaleSwitcher } from './LocaleSwitcher.vue'

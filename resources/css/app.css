@@ -1,0 +1,407 @@
+/* ============================================================
+ * L'Astuce — Design system entry (Tailwind 4)
+ * ============================================================ */
+
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+
+/* Class-based dark mode: <html class="dark"> ou data-theme="dark" */
+@custom-variant dark (&:where(.dark, .dark *, [data-theme='dark'], [data-theme='dark'] *));
+
+/* ----------------------------------------------------------------
+ * Self-hosted brand font (Figtree Variable, subset latin uniquement)
+ * Pas de Google Fonts (privacy + perf).
+ * ---------------------------------------------------------------- */
+@font-face {
+    font-family: 'Figtree Variable';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 300 900;
+    src: url('/fonts/figtree-latin-variable.woff2') format('woff2-variations');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+        U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+        U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ----------------------------------------------------------------
+ * Surface tokens — light/dark adaptatif via custom properties
+ * Le mode clair est actif par défaut ; .dark sur <html> bascule.
+ * ---------------------------------------------------------------- */
+:root {
+    --surface-0: #ffffff;
+    --surface-1: #f8fafc;
+    --surface-2: #f1f5f9;
+    --surface-3: #e2e8f0;
+    --surface-fg: #0f172a;
+    --surface-fg-muted: #475569;
+    --surface-border: #e2e8f0;
+    --surface-overlay: rgba(15, 23, 42, 0.4);
+}
+
+.dark,
+[data-theme='dark'] {
+    --surface-0: #0b1220;
+    --surface-1: #0f172a;
+    --surface-2: #1e293b;
+    --surface-3: #334155;
+    --surface-fg: #f8fafc;
+    --surface-fg-muted: #cbd5e1;
+    --surface-border: #1e293b;
+    --surface-overlay: rgba(2, 6, 23, 0.6);
+}
+
+/* ----------------------------------------------------------------
+ * Design tokens — exposés à Tailwind via @theme.
+ * Tout ce qui est ici génère des utilitaires (bg-*, text-*, font-*…).
+ * ---------------------------------------------------------------- */
+@theme {
+    /* Typographie ----------------------------------------------- */
+    --font-sans:
+        'Figtree Variable', ui-sans-serif, system-ui, -apple-system,
+        'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-display:
+        'Figtree Variable', ui-sans-serif, system-ui, sans-serif;
+    --font-mono:
+        ui-monospace, SFMono-Regular, 'JetBrains Mono', Menlo, Monaco,
+        Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+    --text-2xs: 0.625rem;
+    --text-2xs--line-height: 1rem;
+    --text-3xl: 1.953rem;
+    --text-3xl--line-height: 2.25rem;
+    --text-4xl: 2.441rem;
+    --text-4xl--line-height: 2.75rem;
+    --text-5xl: 3.052rem;
+    --text-5xl--line-height: 3.5rem;
+
+    /* Brand (corail du logo) ------------------------------------ */
+    --color-brand-50: #fff1f1;
+    --color-brand-100: #ffe1e2;
+    --color-brand-200: #ffc8ca;
+    --color-brand-300: #ffa1a4;
+    --color-brand-400: #fa7478;
+    --color-brand-500: #f06063;
+    --color-brand-600: #d9484c;
+    --color-brand-700: #b83236;
+    --color-brand-800: #982d31;
+    --color-brand-900: #7e2b2e;
+    --color-brand-950: #451113;
+
+    /* Alias legacy "astuce" — à conserver le temps de la migration
+       Blade → Inertia/Vue. Mêmes valeurs que brand. */
+    --color-astuce-50: #fff1f1;
+    --color-astuce-100: #ffe1e2;
+    --color-astuce-200: #ffc8ca;
+    --color-astuce-300: #ffa1a4;
+    --color-astuce-400: #fa7478;
+    --color-astuce-500: #f06063;
+    --color-astuce-600: #d9484c;
+    --color-astuce-700: #b83236;
+    --color-astuce-800: #982d31;
+    --color-astuce-900: #7e2b2e;
+    --color-astuce-950: #451113;
+
+    /* Accent (vert petrole du logo) ----------------------------- */
+    --color-accent-50: #ecfdfb;
+    --color-accent-100: #d0f7f2;
+    --color-accent-200: #a6eee6;
+    --color-accent-300: #6eddd3;
+    --color-accent-400: #2fc5bc;
+    --color-accent-500: #0b8f88;
+    --color-accent-600: #00645f;
+    --color-accent-700: #06534f;
+    --color-accent-800: #08433f;
+    --color-accent-900: #0a3836;
+    --color-accent-950: #031f1e;
+
+    /* Sémantique : succès (palette legacy conservée) ----------- */
+    --color-success-50: #f0fdf4;
+    --color-success-100: #dcfce7;
+    --color-success-200: #bbf7d0;
+    --color-success-300: #86efac;
+    --color-success-400: #4ade80;
+    --color-success-500: #22c55e;
+    --color-success-600: #16a34a;
+    --color-success-700: #15803d;
+    --color-success-800: #166534;
+    --color-success-900: #14532d;
+    --color-success-950: #052e16;
+
+    /* Surface — réfère aux variables CSS (s'adapte light/dark) -- */
+    --color-surface-0: var(--surface-0);
+    --color-surface-1: var(--surface-1);
+    --color-surface-2: var(--surface-2);
+    --color-surface-3: var(--surface-3);
+    --color-surface-fg: var(--surface-fg);
+    --color-surface-fg-muted: var(--surface-fg-muted);
+    --color-surface-border: var(--surface-border);
+
+    /* Spacing extras ------------------------------------------- */
+    --spacing-72: 18rem;
+    --spacing-84: 21rem;
+    --spacing-96: 24rem;
+
+    /* Shadows brandées ---------------------------------------- */
+    --shadow-astuce:
+        0 4px 6px -1px rgba(240, 96, 99, 0.14),
+        0 2px 4px -1px rgba(0, 100, 95, 0.08);
+    --shadow-astuce-lg:
+        0 10px 15px -3px rgba(240, 96, 99, 0.16),
+        0 4px 6px -2px rgba(0, 100, 95, 0.08);
+    --shadow-brand:
+        0 4px 6px -1px rgba(240, 96, 99, 0.14),
+        0 2px 4px -1px rgba(0, 100, 95, 0.08);
+    --shadow-brand-lg:
+        0 10px 15px -3px rgba(240, 96, 99, 0.16),
+        0 4px 6px -2px rgba(0, 100, 95, 0.08);
+
+    /* Animations brandées ------------------------------------- */
+    --animate-fade-in: fadeIn 0.5s ease-in-out;
+    --animate-slide-up: slideUp 0.3s ease-out;
+    --animate-bounce-slow: bounce 2s infinite;
+}
+
+/* Keyframes utilisées par les animations du @theme ---------------- */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes slideUp {
+    0% { transform: translateY(10px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ----------------------------------------------------------------
+ * Compat v3 → v4 : bordures par défaut en gray-200 (au lieu de
+ * currentColor) pour ne pas casser le rendu Blade existant.
+ * À retirer quand toutes les pages auront été migrées en composants
+ * Vue avec bordures explicites.
+ * ---------------------------------------------------------------- */
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+/* Import des styles spécifiques composants JS legacy */
+@import './components.css';
+
+/* ----------------------------------------------------------------
+ * Base layer — typographie, scroll, comportement global.
+ * Les anciens layouts Blade ciblaient bg-slate-900 (sombre) ;
+ * les nouvelles pages Inertia utiliseront bg-surface-0.
+ * ---------------------------------------------------------------- */
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-sans);
+        background-color: var(--surface-0);
+        color: var(--surface-fg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Surcharge legacy : retirer color: inherit des éléments form */
+    button, input, optgroup, select, textarea {
+        color: initial;
+    }
+}
+
+/* ----------------------------------------------------------------
+ * Components — classes utilitaires legacy (Blade). On garde @apply
+ * pour ne rien casser le temps de la migration.
+ * ---------------------------------------------------------------- */
+@layer components {
+    .container-astuce {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+
+    .btn-primary,
+    .btn-astuce {
+        @apply bg-gradient-to-r from-brand-500 to-accent-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 hover:from-brand-600 hover:to-accent-700;
+    }
+
+    .btn-secondary,
+    .btn-astuce-outline {
+        @apply bg-white/10 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300;
+    }
+
+    .card-glass,
+    .card-astuce {
+        @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300;
+    }
+
+    .episode-card {
+        @apply bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden;
+        transform: translateY(0);
+    }
+
+    .episode-card:hover {
+        transform: translateY(-8px) scale(1.02);
+    }
+
+    .episode-thumbnail {
+        @apply aspect-video bg-gradient-to-br from-gray-700 to-gray-900 relative overflow-hidden;
+    }
+
+    .episode-play-button {
+        @apply w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg transition-all duration-300;
+    }
+
+    .episode-play-button:hover {
+        background-color: rgb(185 28 28);
+        transform: scale(1.1);
+    }
+
+    .episode-overlay {
+        @apply absolute inset-0 flex items-center justify-center bg-black/30 transition-all duration-300;
+    }
+
+    .episode-badge {
+        @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+    }
+
+    .episode-badge-episode {
+        @apply bg-brand-100 text-brand-800;
+    }
+    .episode-badge-coulisse {
+        @apply bg-accent-100 text-accent-800;
+    }
+    .episode-badge-bonus {
+        @apply bg-yellow-100 text-yellow-800;
+    }
+    .episode-badge-special {
+        @apply bg-green-100 text-green-800;
+    }
+
+    .episode-duration {
+        @apply absolute bottom-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded backdrop-blur-sm;
+    }
+
+    .episode-title {
+        @apply text-lg font-bold text-gray-900 mb-2 transition-colors duration-300;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .episode-description {
+        @apply text-gray-600 text-sm mb-4;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .gradient-astuce {
+        @apply bg-gradient-to-br from-accent-950 via-accent-800 to-brand-800;
+    }
+
+    .text-gradient {
+        @apply bg-gradient-to-r from-brand-400 via-brand-500 to-accent-400 bg-clip-text text-transparent;
+    }
+
+    .nav-link {
+        @apply inline-flex items-center px-3 py-2 rounded-lg text-sm font-medium text-gray-300 transition-all duration-300;
+    }
+
+    .nav-link:hover {
+        @apply text-white bg-white/10;
+    }
+
+    .nav-link-active {
+        @apply bg-white/20 text-white border-white/30;
+    }
+
+    .nav-link-inactive {
+        @apply text-gray-300;
+    }
+
+    .section-padding {
+        @apply py-16 lg:py-24;
+    }
+}
+
+/* ----------------------------------------------------------------
+ * Animations + utilitaires legacy
+ * ---------------------------------------------------------------- */
+@keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(240, 96, 99, 0.45); }
+    50% { box-shadow: 0 0 40px rgba(0, 100, 95, 0.55); }
+}
+
+@keyframes scale-in {
+    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes shimmerCss {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@layer utilities {
+    .animate-blob { animation: blob 7s infinite; }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-gradient {
+        background-size: 400% 400%;
+        animation: gradientShift 3s ease infinite;
+    }
+    .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+    .animate-scale-in { animation: scale-in 0.6s ease-out forwards; }
+    .animate-shimmer {
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+        background-size: 200% 100%;
+        animation: shimmerCss 2s infinite;
+    }
+
+    .animation-delay-200 { animation-delay: 200ms; }
+    .animation-delay-400 { animation-delay: 400ms; }
+    .animation-delay-1000 { animation-delay: 1s; }
+    .animation-delay-2000 { animation-delay: 2s; }
+    .animation-delay-4000 { animation-delay: 4s; }
+
+    .glass {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Custom scrollbar — conservé tel quel */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1e293b; }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #f06063, #00645f);
+    border-radius: 4px;
+}

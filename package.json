@@ -1,0 +1,46 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vue-tsc --noEmit && vite build",
+        "build:fast": "vite build",
+        "type-check": "vue-tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "watch": "vite build --watch",
+        "hot": "vite --host"
+    },
+    "devDependencies": {
+        "@tailwindcss/forms": "^0.5.11",
+        "@tailwindcss/vite": "^4.2.4",
+        "@types/node": "^25.6.0",
+        "@vitest/coverage-v8": "^4.1.5",
+        "@vue/test-utils": "^2.4.10",
+        "axios": "^1.6.4",
+        "jsdom": "^29.1.1",
+        "laravel-vite-plugin": "^1.0.0",
+        "tailwindcss": "^4.2.4",
+        "terser": "^5.42.0",
+        "typescript": "^6.0.3",
+        "vite": "^5.0.0",
+        "vitest": "^4.1.5",
+        "vue-tsc": "^3.2.7"
+    },
+    "dependencies": {
+        "@fontsource-variable/figtree": "^5.2.10",
+        "@inertiajs/vue3": "^3.0.3",
+        "@tiptap/extension-image": "^3.22.5",
+        "@tiptap/extension-link": "^3.22.5",
+        "@tiptap/starter-kit": "^3.22.5",
+        "@tiptap/vue-3": "^3.22.5",
+        "@vitejs/plugin-vue": "^6.0.6",
+        "gsap": "^3.12.2",
+        "intersection-observer": "^0.12.2",
+        "pinia": "^3.0.4",
+        "swiper": "^11.0.5",
+        "vanilla-lazyload": "^17.8.5",
+        "vue": "^3.5.33",
+        "vue-i18n": "^11.4.0"
+    }
+}
