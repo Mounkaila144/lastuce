@@ -17,9 +17,16 @@
     "episodes": "Épisodes",
     "tips": "Astuces",
     "blog": "Blog",
+    "gallery": "Galerie",
     "partnerships": "Partenariats",
     "contact": "Contact",
     "submitTip": "Proposer une astuce"
+  },
+  "gallery": {
+    "title": "Galerie",
+    "subtitle": "Les coulisses, les tournages et les moments forts de l'émission.",
+    "empty": "La galerie est encore vide. Revenez bientôt !",
+    "close": "Fermer"
   },
   "newsletter": {
     "placeholder": "Votre adresse email",

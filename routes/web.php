@@ -9,6 +9,7 @@ use App\Http\Controllers\PartenaritController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\GalleryController;
 use Illuminate\Support\Facades\Auth;
 
 // Contrôleurs Admin
@@ -20,6 +21,8 @@ use App\Http\Controllers\Admin\EpisodeAdminController;
 use App\Http\Controllers\Admin\PartenariatAdminController;
 use App\Http\Controllers\Admin\NewsletterAdminController;
 use App\Http\Controllers\Admin\BlogAdminController;
+use App\Http\Controllers\Admin\GalleryAdminController;
+use App\Http\Controllers\Admin\PartnerAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -139,6 +142,9 @@ Route::group([
         Route::get('/tag/{tag}', [BlogController::class, 'tag'])->name('blog.tag');
         Route::get('/{slug}', [BlogController::class, 'show'])->name('blog.show');
     });
+
+    // Galerie publique (images de tournages, coulisses, événements).
+    Route::get('/galerie', [GalleryController::class, 'index'])->name('gallery.index');
 });
 
 // Routes sans préfixe de langue (API, utilitaires)
@@ -211,6 +217,16 @@ Route::group([
     Route::post('/blog/{blog}/publish', [BlogAdminController::class, 'publish'])->name('blog.publish');
     Route::post('/blog/{blog}/unpublish', [BlogAdminController::class, 'unpublish'])->name('blog.unpublish');
     Route::resource('blog', BlogAdminController::class);
+
+    // Gestion de la galerie (images publiques).
+    Route::resource('gallery', GalleryAdminController::class)
+        ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
+        ->middleware('can:admin:gallery.manage');
+
+    // Gestion des logos de partenaires (bandeau page d'accueil).
+    Route::resource('partners', PartnerAdminController::class)
+        ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])
+        ->middleware('can:admin:partners.manage');
 
     // Gestion des partenariats
     Route::resource('partenariats', PartenariatAdminController::class)->middleware('can:admin:partenariats.manage');

@@ -70,5 +70,13 @@ class AuthServiceProvider extends ServiceProvider
                 $user->hasPermission('blog.delete')
             );
         });
+
+        Gate::define('admin:gallery.manage', function ($user) {
+            return $user->isAdmin() && $user->hasPermission('gallery.manage');
+        });
+
+        Gate::define('admin:partners.manage', function ($user) {
+            return $user->isAdmin() && $user->hasPermission('partners.manage');
+        });
     }
 }

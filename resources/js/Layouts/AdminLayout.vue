@@ -62,11 +62,13 @@ const navSections = computed<NavSection[]>(() => [
         badge: pendingCounts.value.astuces ?? 0,
       },
       { label: 'Articles blog', href: '/admin/blog' },
+      { label: 'Galerie', href: '/admin/gallery' },
     ],
   },
   {
     label: 'Communauté',
     items: [
+      { label: 'Partenaires (logos)', href: '/admin/partners' },
       {
         label: 'Partenariats',
         href: '/admin/partenariats',

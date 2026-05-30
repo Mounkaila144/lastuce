@@ -230,8 +230,10 @@ class LogAdminActionsMiddleware
         $method = $request->method();
         
         if (in_array($method, ['POST', 'PUT', 'PATCH'])) {
-            $data = $request->all();
-            
+            // On exclut les fichiers uploadés : ce sont des objets UploadedFile
+            // non sérialisables en JSON (la colonne new_values est castée array).
+            $data = $request->except(array_keys($request->allFiles()));
+
             // Filtrer les données sensibles
             $filtered = array_filter($data, function($key) {
                 return !in_array($key, [
@@ -243,10 +245,31 @@ class LogAdminActionsMiddleware
                 ]);
             }, ARRAY_FILTER_USE_KEY);
 
-            return $filtered;
+            // Garde-fou : on ne conserve que des valeurs scalaires/tableaux
+            // encodables en JSON (un UploadedFile imbriqué casserait l'insert).
+            return $this->sanitizeForJson($filtered);
         }
 
         return null;
+    }
+
+    /**
+     * Ne conserver que les valeurs encodables en JSON (scalaires, null et
+     * tableaux récursifs). Tout objet (ex. UploadedFile résiduel) est écarté.
+     */
+    private function sanitizeForJson(array $data): array
+    {
+        $clean = [];
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                $clean[$key] = $this->sanitizeForJson($value);
+            } elseif (is_scalar($value) || is_null($value)) {
+                $clean[$key] = $value;
+            }
+            // Les objets (fichiers, etc.) sont volontairement ignorés.
+        }
+
+        return $clean;
     }
 
     /**

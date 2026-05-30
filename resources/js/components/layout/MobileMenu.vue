@@ -27,6 +27,7 @@ const navLinks = computed(() => [
   { to: `/${ui.locale}/episodes`, label: 'nav.episodes' },
   { to: `/${ui.locale}/astuces`, label: 'nav.tips' },
   { to: `/${ui.locale}/blog`, label: 'nav.blog' },
+  { to: `/${ui.locale}/galerie`, label: 'nav.gallery' },
   { to: `/${ui.locale}/partenariats`, label: 'nav.partnerships' },
   { to: `/${ui.locale}/contact`, label: 'nav.contact' },
 ])

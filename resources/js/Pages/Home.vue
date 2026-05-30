@@ -27,6 +27,8 @@ interface Testimonial {
 interface Partner {
   id: number
   nom: string
+  site_web?: string | null
+  logo_url?: string | null
 }
 
 interface HomeStats {
@@ -50,6 +52,11 @@ const heroSubtitle = computed(() => {
   const total = props.stats.episodes
   return `${total.toLocaleString('fr-FR')} épisodes pour transformer votre quotidien.`
 })
+
+// Bandeau défilant : on duplique la liste pour un défilement continu sans
+// rupture visuelle (l'animation translate de -50 %).
+const marqueePartners = computed(() => [...props.partners, ...props.partners])
+
 </script>
 
 <template>
@@ -160,11 +167,36 @@ const heroSubtitle = computed(() => {
 
   <section v-if="partners.length" class="bg-surface-1 py-10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="mb-4 text-center text-sm font-semibold uppercase tracking-wider text-surface-fg-muted">
+      <h2 class="mb-6 text-center text-sm font-semibold uppercase tracking-wider text-surface-fg-muted">
         Ils nous font confiance
       </h2>
-      <ul class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-base font-semibold text-surface-fg-muted">
-        <li v-for="p in partners" :key="p.id">{{ p.nom }}</li>
+    </div>
+    <div class="marquee group relative overflow-hidden">
+      <ul class="marquee-track flex w-max items-center gap-12 px-6">
+        <li
+          v-for="(p, i) in marqueePartners"
+          :key="`${p.id}-${i}`"
+          class="flex shrink-0 items-center"
+          :aria-hidden="i >= partners.length ? 'true' : undefined"
+        >
+          <component
+            :is="p.site_web ? 'a' : 'div'"
+            :href="p.site_web ?? undefined"
+            :target="p.site_web ? '_blank' : undefined"
+            rel="noopener"
+            class="flex items-center"
+            :title="p.nom"
+          >
+            <img
+              v-if="p.logo_url"
+              :src="p.logo_url"
+              :alt="p.nom"
+              loading="lazy"
+              class="h-12 w-auto max-w-[160px] object-contain transition hover:scale-105"
+            />
+            <span v-else class="text-base font-semibold text-surface-fg-muted">{{ p.nom }}</span>
+          </component>
+        </li>
       </ul>
     </div>
   </section>
@@ -201,3 +233,29 @@ const heroSubtitle = computed(() => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+/* Pause au survol pour laisser le temps de cliquer un logo. */
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    /* On défile de la moitié : la liste est dupliquée, donc la boucle est invisible. */
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+</style>

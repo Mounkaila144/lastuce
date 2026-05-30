@@ -213,6 +213,8 @@ class User extends Authenticatable
             'astuces.moderate' => 'Modérer les astuces',
             'astuces.delete' => 'Supprimer les astuces',
             'partenariats.manage' => 'Gérer les partenariats',
+            'partners.manage' => 'Gérer les logos de partenaires',
+            'gallery.manage' => 'Gérer la galerie',
             'newsletter.manage' => 'Gérer la newsletter',
             'blog.create' => 'Créer des articles de blog',
             'blog.edit' => 'Modifier des articles de blog',

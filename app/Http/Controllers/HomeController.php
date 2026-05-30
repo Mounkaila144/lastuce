@@ -8,6 +8,7 @@ use App\Models\BlogArticle;
 use App\Models\NewsletterAbonne;
 use App\Models\AstucesSoumise;
 use App\Models\Partenariat;
+use App\Models\Partner;
 use App\Http\Resources\EpisodeResource;
 use App\Http\Resources\BlogArticleResource;
 use Illuminate\Http\JsonResponse;
@@ -41,18 +42,23 @@ class HomeController extends Controller
             ->limit(3)
             ->get();
 
-        $partners = Partenariat::accepte()
-            ->orderBy('created_at', 'desc')
-            ->limit(6)
-            ->get(['id', 'nom_entreprise']);
+        // Logos de partenaires éditorialisés par l'admin (bandeau défilant).
+        // À ne pas confondre avec les *demandes* de partenariat (Partenariat).
+        $partners = Partner::visible()
+            ->ordered()
+            ->with('media')
+            ->get();
 
         return Inertia::render('Home', [
             'featuredEpisode' => $featuredEpisode ? (new EpisodeResource($featuredEpisode))->resolve() : null,
             'latestEpisodes' => EpisodeResource::collection($latestEpisodes)->resolve(),
             'latestBlogArticles' => BlogArticleResource::collection($latestBlogArticles)->resolve(),
-            'partners' => $partners->map(fn ($p) => [
+            'partners' => $partners->map(fn (Partner $p) => [
                 'id' => $p->id,
-                'nom' => $p->nom_entreprise,
+                'nom' => $p->nom,
+                'site_web' => $p->site_web,
+                'logo_url' => $p->getFirstMedia('logo')?->getUrl('logo')
+                    ?: $p->getFirstMedia('logo')?->getUrl(),
             ])->values(),
             'testimonials' => $this->getTestimonials(),
             'stats' => [

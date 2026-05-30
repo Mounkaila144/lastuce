@@ -17,9 +17,16 @@
     "episodes": "Episodes",
     "tips": "Tips",
     "blog": "Blog",
+    "gallery": "Gallery",
     "partnerships": "Partnerships",
     "contact": "Contact",
     "submitTip": "Submit a tip"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": "Behind the scenes, shoots and highlights from the show.",
+    "empty": "The gallery is still empty. Check back soon!",
+    "close": "Close"
   },
   "newsletter": {
     "placeholder": "Your email address",
