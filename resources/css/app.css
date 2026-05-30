@@ -74,45 +74,45 @@
     --text-5xl: 3.052rem;
     --text-5xl--line-height: 3.5rem;
 
-    /* Brand (corail du logo) ------------------------------------ */
-    --color-brand-50: #fff1f1;
-    --color-brand-100: #ffe1e2;
-    --color-brand-200: #ffc8ca;
-    --color-brand-300: #ffa1a4;
-    --color-brand-400: #fa7478;
-    --color-brand-500: #f06063;
-    --color-brand-600: #d9484c;
-    --color-brand-700: #b83236;
-    --color-brand-800: #982d31;
-    --color-brand-900: #7e2b2e;
-    --color-brand-950: #451113;
+    /* Brand (bleu marine du logo « L'astuce! » — #272757) ------- */
+    --color-brand-50: #f4f4f9;
+    --color-brand-100: #e7e7f1;
+    --color-brand-200: #cbcbe0;
+    --color-brand-300: #a3a3c8;
+    --color-brand-400: #6f6fa1;
+    --color-brand-500: #4a4a80;
+    --color-brand-600: #353568;
+    --color-brand-700: #272757;
+    --color-brand-800: #1f1f46;
+    --color-brand-900: #1a1a39;
+    --color-brand-950: #101023;
 
     /* Alias legacy "astuce" — à conserver le temps de la migration
        Blade → Inertia/Vue. Mêmes valeurs que brand. */
-    --color-astuce-50: #fff1f1;
-    --color-astuce-100: #ffe1e2;
-    --color-astuce-200: #ffc8ca;
-    --color-astuce-300: #ffa1a4;
-    --color-astuce-400: #fa7478;
-    --color-astuce-500: #f06063;
-    --color-astuce-600: #d9484c;
-    --color-astuce-700: #b83236;
-    --color-astuce-800: #982d31;
-    --color-astuce-900: #7e2b2e;
-    --color-astuce-950: #451113;
+    --color-astuce-50: #f4f4f9;
+    --color-astuce-100: #e7e7f1;
+    --color-astuce-200: #cbcbe0;
+    --color-astuce-300: #a3a3c8;
+    --color-astuce-400: #6f6fa1;
+    --color-astuce-500: #4a4a80;
+    --color-astuce-600: #353568;
+    --color-astuce-700: #272757;
+    --color-astuce-800: #1f1f46;
+    --color-astuce-900: #1a1a39;
+    --color-astuce-950: #101023;
 
-    /* Accent (vert petrole du logo) ----------------------------- */
-    --color-accent-50: #ecfdfb;
-    --color-accent-100: #d0f7f2;
-    --color-accent-200: #a6eee6;
-    --color-accent-300: #6eddd3;
-    --color-accent-400: #2fc5bc;
-    --color-accent-500: #0b8f88;
-    --color-accent-600: #00645f;
-    --color-accent-700: #06534f;
-    --color-accent-800: #08433f;
-    --color-accent-900: #0a3836;
-    --color-accent-950: #031f1e;
+    /* Accent (orange du logo — #FF7420) ------------------------- */
+    --color-accent-50: #fff4ed;
+    --color-accent-100: #ffe6d4;
+    --color-accent-200: #ffc8a8;
+    --color-accent-300: #ffa270;
+    --color-accent-400: #ff8a4d;
+    --color-accent-500: #ff7420;
+    --color-accent-600: #f25c10;
+    --color-accent-700: #c8470f;
+    --color-accent-800: #9e3a14;
+    --color-accent-900: #7f3214;
+    --color-accent-950: #451608;
 
     /* Sémantique : succès (palette legacy conservée) ----------- */
     --color-success-50: #f0fdf4;
@@ -143,17 +143,17 @@
 
     /* Shadows brandées ---------------------------------------- */
     --shadow-astuce:
-        0 4px 6px -1px rgba(240, 96, 99, 0.14),
-        0 2px 4px -1px rgba(0, 100, 95, 0.08);
+        0 4px 6px -1px rgba(39, 39, 87, 0.14),
+        0 2px 4px -1px rgba(255, 116, 32, 0.08);
     --shadow-astuce-lg:
-        0 10px 15px -3px rgba(240, 96, 99, 0.16),
-        0 4px 6px -2px rgba(0, 100, 95, 0.08);
+        0 10px 15px -3px rgba(39, 39, 87, 0.16),
+        0 4px 6px -2px rgba(255, 116, 32, 0.08);
     --shadow-brand:
-        0 4px 6px -1px rgba(240, 96, 99, 0.14),
-        0 2px 4px -1px rgba(0, 100, 95, 0.08);
+        0 4px 6px -1px rgba(39, 39, 87, 0.14),
+        0 2px 4px -1px rgba(255, 116, 32, 0.08);
     --shadow-brand-lg:
-        0 10px 15px -3px rgba(240, 96, 99, 0.16),
-        0 4px 6px -2px rgba(0, 100, 95, 0.08);
+        0 10px 15px -3px rgba(39, 39, 87, 0.16),
+        0 4px 6px -2px rgba(255, 116, 32, 0.08);
 
     /* Animations brandées ------------------------------------- */
     --animate-fade-in: fadeIn 0.5s ease-in-out;
@@ -351,8 +351,8 @@
 }
 
 @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(240, 96, 99, 0.45); }
-    50% { box-shadow: 0 0 40px rgba(0, 100, 95, 0.55); }
+    0%, 100% { box-shadow: 0 0 20px rgba(39, 39, 87, 0.45); }
+    50% { box-shadow: 0 0 40px rgba(255, 116, 32, 0.55); }
 }
 
 @keyframes scale-in {
@@ -402,6 +402,6 @@
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #1e293b; }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #f06063, #00645f);
+    background: linear-gradient(to bottom, #272757, #ff7420);
     border-radius: 4px;
 }

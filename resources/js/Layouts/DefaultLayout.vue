@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppHeader from '@/components/layout/AppHeader.vue'
 import AppFooter from '@/components/layout/AppFooter.vue'
+import WhatsAppButton from '@/components/layout/WhatsAppButton.vue'
 import ToastContainer from '@/components/ui/ToastContainer.vue'
 
 defineProps<{ title?: string }>()
@@ -13,6 +14,7 @@ defineProps<{ title?: string }>()
       <slot />
     </main>
     <AppFooter />
+    <WhatsAppButton />
     <ToastContainer />
   </div>
 </template>

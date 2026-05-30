@@ -78,7 +78,7 @@ function submit() {
   if (isEdit.value && props.article) {
     form
       .transform((data) => ({ ...data, _method: 'put' }))
-      .post(`/admin/blog/${props.article.id}`, { forceFormData: true })
+      .post(`/admin/blog/${props.article.slug}`, { forceFormData: true })
   } else {
     form.post('/admin/blog', { forceFormData: true })
   }

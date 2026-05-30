@@ -1,7 +1,11 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ compact?: boolean }>(), { compact: false })
+import { computed } from 'vue'
 
-const logoSrc = '/logo.png'
+const props = withDefaults(defineProps<{ compact?: boolean }>(), { compact: false })
+
+// En mode compact (sidebar admin, espaces étroits) on utilise l'icône courte
+// « L'a! » ; sinon le logotype complet « L'astuce! ».
+const logoSrc = computed(() => (props.compact ? '/favicon.png' : '/logo.png'))
 </script>
 
 <template>
@@ -9,7 +13,7 @@ const logoSrc = '/logo.png'
     <img
       :src="logoSrc"
       alt="L'Astuce"
-      :class="compact ? 'h-8 w-auto' : 'h-10 w-auto'"
+      :class="compact ? 'h-10 w-auto' : 'h-24 w-auto'"
     >
   </span>
 </template>

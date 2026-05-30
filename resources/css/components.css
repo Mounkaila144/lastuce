@@ -72,7 +72,7 @@
 }
 
 .progress-fill {
-    background: linear-gradient(90deg, #f06063, #00645f);
+    background: linear-gradient(90deg, #272757, #ff7420);
 }
 
 /* ===== FORMULAIRES ===== */
@@ -91,13 +91,13 @@
 }
 
 .upload-drop-zone:hover {
-    border-color: #f06063;
-    background-color: #fff1f1;
+    border-color: #272757;
+    background-color: #f4f4f9;
 }
 
 .upload-drop-zone.dragover {
-    border-color: #00645f;
-    background-color: #ecfdfb;
+    border-color: #ff7420;
+    background-color: #fff4ed;
     transform: scale(1.02);
 }
 
@@ -173,7 +173,7 @@
 }
 
 .swiper-pagination-bullet-active {
-    background: #f06063;
+    background: #272757;
     transform: scale(1.2);
 }
 
@@ -242,10 +242,10 @@
 }
 
 .filter-button.active {
-    background: #f06063;
+    background: #272757;
     color: white;
     transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(240, 96, 99, 0.3);
+    box-shadow: 0 2px 8px rgba(39, 39, 87, 0.3);
 }
 
 .filtered-out {
@@ -273,7 +273,7 @@
 
 .search-container input:focus {
     transform: scale(1.02);
-    box-shadow: 0 0 0 3px rgba(240, 96, 99, 0.12);
+    box-shadow: 0 0 0 3px rgba(39, 39, 87, 0.12);
 }
 
 .search-hidden {
@@ -326,7 +326,7 @@
 }
 
 [data-back-to-top]:hover {
-    box-shadow: 0 8px 25px rgba(240, 96, 99, 0.3);
+    box-shadow: 0 8px 25px rgba(39, 39, 87, 0.3);
 }
 
 .progress-circle {
@@ -403,7 +403,7 @@
     }
     
     .upload-drop-zone:hover {
-        border-color: #f06063;
+        border-color: #272757;
         background: #1e293b;
     }
     
@@ -435,7 +435,7 @@
 
 /* Focus visible pour l'accessibilité */
 .focus-visible:focus {
-    outline: 2px solid #f06063;
+    outline: 2px solid #272757;
     outline-offset: 2px;
 }
 
@@ -466,7 +466,7 @@
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, #f06063, #00645f);
+    background: linear-gradient(135deg, #272757, #ff7420);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

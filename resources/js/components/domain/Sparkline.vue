@@ -14,8 +14,8 @@ const props = withDefaults(
   {
     width: 320,
     height: 80,
-    stroke: '#f06063',
-    fill: 'rgba(240,96,99,0.12)',
+    stroke: '#ff7420',
+    fill: 'rgba(255,116,32,0.12)',
   },
 )
 

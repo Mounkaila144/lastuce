@@ -217,8 +217,8 @@ useAdminTitle('Tableau de bord')
           :values="chartData.episodes"
           :labels="chartData.labels"
           label="Épisodes créés (30j)"
-          stroke="#f06063"
-          fill="rgba(240,96,99,0.12)"
+          stroke="#272757"
+          fill="rgba(39,39,87,0.12)"
         />
       </div>
       <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
